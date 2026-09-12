@@ -3,8 +3,8 @@ In this repo, I have added my Embedded Linux Diploma Yocto Project. However, I a
 
 # Table of Contents
 
-- [[#introduction-to-embedded-linux]]
-- [[#Introduction to the Yocto Project]]
+- [Introduction To Embedded Linux](#introduction-to-embedded-linux)
+- [Introduction to the Yocto Project](#introduction-to-the-yocto-project)
 - [[#Hardware Selection]]
 - [[#Target Selection]]
 - [[#Host Environment Preparation]]
