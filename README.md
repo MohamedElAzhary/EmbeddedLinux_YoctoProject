@@ -5,6 +5,7 @@ In this repo, I have added my Embedded Linux Diploma Yocto Project. However, I a
 
 - [Introduction To Embedded Linux](#introduction-to-embedded-linux)
 - [Introduction to the Yocto Project](#introduction-to-the-yocto-project)
+- [Project Requirements](project-requirements)
 - [Hardware Selection](#hardware-selection)
 - [Target Selection](#target-selection)
 - [Host Environment Preparation](#host-environment-preparation)
@@ -14,21 +15,21 @@ In this repo, I have added my Embedded Linux Diploma Yocto Project. However, I a
 - [Adding Layers](#adding-layers)
 - [Creating Layers](#creating-layers)
 - [meta-audio-distro layer.conf (default) explained](#meta-audio-distro-layerconf-default-explained)
-- [[#audio.conf explained]]
-- [[#sysvinit.inc explained]]
-- [[#meta-infotainment-distro layer.conf explained]]
-- [[#infotainment.conf explained]]
-- [[#systemd.inc explained]]
-- [[#Create a recipe with recipetool]]
-- [[#helloworld recipe explained]]
-- [[#Create Image Recipe]]
-- [[#ivi-test-image Recipe explained]]
-- [[#Baking ivi-test-image recipe]]
-- [[#Adding Nano Editor Recipe]]
-- [[#nano-7.4.bb explained]]
-- [[#Create RPI Play Recipe]]
-- [[#rpiplay_1.0.bb explained]]
-- [[#Integrating Audio Stack]]
+- [audio.conf explained](#audioconf-explained)
+- [sysvinit.inc explained](#sysvinitinc-explained)
+- [meta-infotainment-distro layer.conf explained](meta-infotainment-distro-layerconf-explained)
+- [infotainment.conf explained](#infotainmentconf-explained)
+- [systemd.inc explained](#systemdinc-explained)
+- [Create a recipe with recipetool](#create-a-recipe-with-recipetool)
+- [helloworld recipe explained](#helloworld-recipe-explained)
+- [Create Image Recipe](#create-image-recipe)
+- [ivi-test-image Recipe explained](#ivi-test-image-recipe-explained)
+- [Baking ivi-test-image recipe](#baking-ivi-test-imagerecipe)
+- [Adding Nano Editor Recipe](#adding-nano-editor-recipe)
+- [nano-7.4.bb explained](#nano-74bb-explained)
+- [Create RPI Play Recipe](#create-rpi-play-recipe)
+- [rpiplay_1.0.bb explained](#rpiplay10bb-explained)
+- [Integrating Audio Stack](#integrating-audio-stack)
 
 
 ---
@@ -76,6 +77,30 @@ The Yocto Project is an entire family of open-source projects developed and main
 - **GLIBC / musl**: The optimized C standard libraries used within the Yocto environment. They are tailored for embedded systems to provide a reduced memory footprint, highly configurable components, and robust support for cross-building and testing. (Note: This replaces the historically used EGLIBC).
 - **Build Appliance**: A fully self-contained Poky build environment packaged as a VMware virtual machine image. It allows developers to evaluate and build with Poky immediately, without needing to install a native Linux OS or configure host dependencies.
 - **Security**: Built-in security modules like SELinux and AppArmor provide the strict access controls needed for connected, secure devices.
+
+# Project Requirements
+- Create Two distributions as follows,
+	- Distribution 1: 
+		- Includes Meta-qt5. 
+		- Uses systemd as the init system. 
+	- Distribution 2: 
+		- Excludes Meta-qt5. 
+		- Uses sysvinit as the init system.
+	- Hardware to be used:
+		- Raspberry Pi 4 (Raspi4) 
+	- Packages to be included:
+		- SSH: Secure Shell for remote access. 
+		- WIFIaddon: Support for wireless connectivity. 
+		- Nano: Simple text editor.
+		- Meta-qt5: Qt5 layer for developing graphical applications.
+		- Community: VSOMEIP: Middleware for inter-process communication.
+		- Collaboration Project: Submit your layer on Open-Embedded as part of the Bullet AI project. 
+		- RPIPlay: For screen mirroring.
+		- Audio: Support for audio playback and recording. 
+		- Native Hello Application: A sample application for testing.
+		- Community: Layer for Observability: A custom layer for monitoring and observability. Image: 
+		- Kernel: 
+			- Version: 5.15.x
 
 ### Hardware Selection
 
