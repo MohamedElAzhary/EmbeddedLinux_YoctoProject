@@ -189,24 +189,37 @@ source oe-init-build-env <BUILD_DIR_NAME>
 ```
 
 - This will create the build directory with the following structure,
-  ![[Pasted image 20260818213106.png]]
+<img width="575" height="288" alt="image" src="https://github.com/user-attachments/assets/74f380f2-777b-4bff-8737-772b7d971447" />
+
+  
 ### Configuring local.conf Build Environment Configuration 
 
  Variables to configure in the local.conf file
  - `MACHINE : Target Machine Name`
-   Available machines for raspberry pi can be found in meta-raspberrypi which is the official Board Support Package (BSP) hardware layer for the Raspberry Pi family of single-board computers.![[Pasted image 20260807192035.png]]
-   ![[Pasted image 20260807192346.png]]
- - `DL_DIR : Directory where source downloads are placed` ![[Pasted image 20260807191629.png]]
- - `SSTATE_DIR : Directory for shared state cache files` ![[Pasted image 20260807191646.png]] 
+   Available machines for raspberry pi can be found in meta-raspberrypi which is the official Board Support Package (BSP) hardware layer for the Raspberry Pi family of single-board computers.
+   <img width="1080" height="84" alt="image" src="https://github.com/user-attachments/assets/02889ead-aa05-4e0f-a3fe-e3f32d243662" />
+   <img width="755" height="42" alt="image" src="https://github.com/user-attachments/assets/06a0767a-a719-406e-a4f7-463f717fae29" />
+   
+ - `DL_DIR : Directory where source downloads are placed`
+ <img width="812" height="79" alt="image" src="https://github.com/user-attachments/assets/a6f0373f-3a21-4b52-9b3e-583e48e00b23" />
+
+ - `SSTATE_DIR : Directory for shared state cache files`
+ <img width="815" height="80" alt="image" src="https://github.com/user-attachments/assets/fcfd5665-6e14-4643-bc6b-5ffcff59adcd" />
+
  - `BB_NUMBER_THREADS : Number of parallel BitBake tasks`
-   ![[Pasted image 20260807194039.png]]
+<img width="518" height="41" alt="image" src="https://github.com/user-attachments/assets/98b49439-8a3a-4338-9338-c713c943bb6b" />
+
  - `PARALLEL_MAKE : Number of parallel Make processes`
-   ![[Pasted image 20260807225428.png]]
+<img width="525" height="49" alt="image" src="https://github.com/user-attachments/assets/1eef73b1-f2f6-42ee-8705-17b8a1d3caa7" />
+   
  -  `TMP_DIR : Directory for build output`
-	 - Cleaning the build files after successful build 
-	   ![[Pasted image 20260807223524.png]]
+	 - Cleaning the build files after successful build
+<img width="813" height="66" alt="image" src="https://github.com/user-attachments/assets/057dc0ee-21ac-476a-8f92-dd251f1b535d" />
+
+	   
  - To check the value of any of these variables,
    `bitbake-getvar <VARIABLE_NAME>`
+   
 ### Adding Layers
 - Layers download links can be obtainded from,
   https://layers.openembedded.org/layerindex/branch/kirkstone/layers/
@@ -217,8 +230,10 @@ source oe-init-build-env <BUILD_DIR_NAME>
 	  `bitbake-layers add-layer ../meta-openembedded/meta-oe`
 	- git clone -b kirkstone https://github.com/meta-qt5/meta-qt5.git
 	  `bitbake-layers add-layer ../meta-qt5`
-	  ![[Pasted image 20260810135335.png]]
-	  ![[Pasted image 20260810135236.png]]
+<img width="998" height="117" alt="image" src="https://github.com/user-attachments/assets/0cbaa63c-4660-4ee3-929a-9c56b54e9603" />
+
+<img width="715" height="194" alt="image" src="https://github.com/user-attachments/assets/df70c757-3fef-40ae-8185-e517089f380d" />
+
 
 ### Creating Layers
 - Create layer to have our software packages recipes
@@ -231,9 +246,9 @@ source oe-init-build-env <BUILD_DIR_NAME>
   `bitbake-layers add-layer ../meta-infotainment-distro`
 - To make these layers as distro layers we need to create a distro directory and a files with the name DISTRO_NAME.conf for the two layers as follows, the files will be explained in the next sections
 
-![[Pasted image 20260818202238.png]]
+<img width="512" height="259" alt="image" src="https://github.com/user-attachments/assets/d5dd50ab-353c-4974-ab8d-57fd764cc40d" />
 
-![[Pasted image 20260818202150.png]]
+<img width="577" height="256" alt="image" src="https://github.com/user-attachments/assets/d027bd75-75ff-4091-b195-03039a552864" />
 
 ### meta-audio-distro layer.conf (default) explained
 
@@ -381,7 +396,8 @@ VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
 6. package
    
 - Create the following structure at meta-IVI layer,
-  ![[Pasted image 20260813223422.png]]
+<img width="494" height="214" alt="image" src="https://github.com/user-attachments/assets/d256e0dd-f37a-43f4-a8fa-391e98b19fb1" />
+
 - Create a recipe which download from the upstream link as follows
   `recipetool create -o helloworld_1.0.bb <GIT_REPO_URL>`
   
@@ -390,13 +406,16 @@ NOTES:
   1- Recipe name is as follows RECIPENAME_MAJORVERSION.MINORVERSION.bb
   2- When refering to the recipe in yocto later like in bitbake RECIPENAME or when using bitbake-getvar -r RECIPENAME VARNAME, we will use the recipename only not the fullname
 ```
-  ![[Pasted image 20260813224224.png]]
+<img width="1258" height="567" alt="image" src="https://github.com/user-attachments/assets/37107e89-3403-4eed-a755-5caa4fec9b07" />
+
 - Make sure to have the structure as follows,
-  ![[Pasted image 20260813224659.png]]
+<img width="431" height="229" alt="image" src="https://github.com/user-attachments/assets/11a8fcef-ce24-486c-81ac-080459ccb039" />
+
   
   Note: that bitbake uses the following path sequence `${LAYERDIR}/recipes-*/*/*.bb` to find recipe .bb files as mentioned in layer.conf, that's why we added our .bb in recipes-native-cpp
-  
-  ![[Pasted image 20260813224914.png]]
+
+<img width="569" height="141" alt="image" src="https://github.com/user-attachments/assets/e388c279-5226-4c63-af1a-1841e287bb0c" />
+
   
 ### helloworld recipe explained
 
@@ -471,7 +490,9 @@ Notes:
 ```
 
 - Create the following structure in the meta-IVI layer,
-  ![[Pasted image 20260818201828.png]]
+
+<img width="426" height="291" alt="image" src="https://github.com/user-attachments/assets/1d5d679b-5ab6-4d11-9571-0ad4c145ac2f" />
+
 
 ### ivi-test-image Recipe explained
 
@@ -491,16 +512,21 @@ IMAGE_FEATURE:append = " debug-tweaks"
 ```
 ### Baking ivi-test-image recipe
 - To bake the image `bitbake ivi-test-image`
-![[Pasted image 20260818200249.png]]
+<img width="1261" height="592" alt="image" src="https://github.com/user-attachments/assets/82002ed9-74cf-479d-82f6-091894fd34f4" />
+
 - The output of the process should exist in the work directory of the image
 - To get the work directory use `bitbake-getvar -r ivi-test-image WORKDIR`
-![[Pasted image 20260818200056.png]]
+<img width="1256" height="123" alt="image" src="https://github.com/user-attachments/assets/978b7349-9fe1-41d4-bbac-4672db70fc7d" />
+
 - The image baking output can be found in the following path,
   `/work/poky/RaspberryPi4_32Bit/tmp/deploy/images/raspberrypi4`
+  
 - The kernel image binary can appear here, also the boot files "bootcode.bin"
-![[Pasted image 20260818201316.png]]
+<img width="1042" height="56" alt="image" src="https://github.com/user-attachments/assets/227d9478-2f9e-4b1f-9aa6-63dbef992eab" />
+
 - The root file system can be found as .ext3 files
-![[Pasted image 20260818201421.png]]
+<img width="1043" height="55" alt="image" src="https://github.com/user-attachments/assets/9f0b1040-cbf6-4a0f-8e58-a53efac8c480" />
+
 - Supported image features can be found at,
   https://docs.yoctoproject.org/ref-manual/variables.html#term-IMAGE_FEATURES
 
@@ -508,14 +534,16 @@ IMAGE_FEATURE:append = " debug-tweaks"
 - Create the following directories structure and using recipetool create a new recipe to add the nano editor
   `recipetool create -o nano_1.0.bb https://git.savannah.gnu.org/git/nano.git`
 
-![[Pasted image 20260819114949.png]]
+<img width="684" height="306" alt="image" src="https://github.com/user-attachments/assets/d63fade1-cbff-42ce-81b4-822d950d8c70" />
 
-![[Pasted image 20260819114922.png]]
+<img width="1250" height="604" alt="image" src="https://github.com/user-attachments/assets/104e224f-0536-46c7-8e87-5258d3073735" />
 
 - Nano Editor Documentation Readme can be found at
   https://cgit.git.savannah.gnu.org/cgit/nano.git/tree/README.hacking
+  
 - Prerequistes show that it needs autotools build system
-  ![[Pasted image 20260819115604.png]]
+<img width="519" height="336" alt="image" src="https://github.com/user-attachments/assets/a8d6bd34-9f97-4ebd-a8f1-98da89e7d453" />
+  
 
 ### nano-7.4.bb explained
 
@@ -543,15 +571,15 @@ Notes:
 2- In nano_7.4.bb the recipetool detected the dependencies for the nano editor and stored it in the following variable DEPENDS
 3- The recipetool also added the inherit keyword automatically to be able to build the nano editor
 ```
-
 - Observe the bitbake output of the recipe baking,
-![[Pasted image 20260819140816.png]]
+<img width="1270" height="613" alt="image" src="https://github.com/user-attachments/assets/734b4705-976f-4d83-8cd9-8d043a4d53f0" />
   
 - The output in the WORKDIR path for nano recipe,
-![[Pasted image 20260819140617.png]]
+<img width="1245" height="95" alt="image" src="https://github.com/user-attachments/assets/92673682-6e76-4c63-b36f-61ff867e79d3" />
 
 - The partial root file system inside image directory
-![[Pasted image 20260819140733.png]]
+<img width="1275" height="104" alt="image" src="https://github.com/user-attachments/assets/71aae426-76d4-4286-b7fe-499658372bd8" />
+
 
 ### Create RPI Play Recipe
 - To create a recipe to build Raspberry Pi Play to be able to do screen mirroring with Iphone,
@@ -562,7 +590,9 @@ Notes:
   2- libavahi-compat-lbdnssd-dev exists in openembedded-core layer with a recipe name avahi
   3- libplist-dev exists in meta-oe layer witha a recipe name libplist
   4- libssl-dev already is detected by recipetool and added to DEPENDS as openssl
-  ![[Pasted image 20260819142221.png]]
+
+  <img width="932" height="541" alt="image" src="https://github.com/user-attachments/assets/acf8dbda-b8ef-447a-91bd-8a7a0e0bb966" />
+
 
 ### rpiplay_1.0.bb explained
 
@@ -602,7 +632,7 @@ EXTRA_OECMAKE = "-DUSE_GSTREAMER=OFF -DDUMMY_RENDERER=ON"
 
 ### Integrating Audio Stack
 
-![[Pasted image 20260911165536.png|650]]
+<img width="837" height="557" alt="image" src="https://github.com/user-attachments/assets/c5607967-fe24-4c83-a7b4-ec3a1ca6b789" />
 
 - The Audio stack integration bridges the gap between raw hardware drivers (like codecs and I2S interfaces) and high-level user-space applications. This ensures that custom embedded devices can accurately play, capture, or stream audio without the bloat or latency issues typical of desktop environments.
 - The Stack is organized as hierarchical layers where each components has a specific function,
