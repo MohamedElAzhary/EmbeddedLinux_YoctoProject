@@ -5,15 +5,15 @@ In this repo, I have added my Embedded Linux Diploma Yocto Project. However, I a
 
 - [Introduction To Embedded Linux](#introduction-to-embedded-linux)
 - [Introduction to the Yocto Project](#introduction-to-the-yocto-project)
-- [[#Hardware Selection]]
-- [[#Target Selection]]
-- [[#Host Environment Preparation]]
-- [[#Download Poky]]
-- [[#Creating a new build environment]]
-- [[#Configuring local.conf Build Environment Configuration]]
-- [[#Adding Layers]]
-- [[#Creating Layers]]
-- [[#meta-audio-distro layer.conf (default) explained]]
+- [Hardware Selection](#hardware-selection)
+- [Target Selection](#target-selection)
+- [Host Environment Preparation](#host-environment-preparation)
+- [Download Poky](#download-poky)
+- [Creating a new build environment](#creating-a-new-build-environment)
+- [Configuring local.conf Build Environment Configuration](#configuring-localconf-build-environment-configuration)
+- [Adding Layers](#adding-layers)
+- [Creating Layers](#creating-layers)
+- [meta-audio-distro layer.conf (default) explained](#meta-audio-distro-layerconf-default-explained)
 - [[#audio.conf explained]]
 - [[#sysvinit.inc explained]]
 - [[#meta-infotainment-distro layer.conf explained]]
